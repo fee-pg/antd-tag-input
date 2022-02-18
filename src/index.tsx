@@ -4,11 +4,13 @@ import { message, Tag, Tooltip, Input } from 'antd'
 import styles from './index.module.less'
 
 type TagInputProps = {
-  value: string[]
-  onChange: (value: string[]) => void
+  className?: string
+  style?: React.CSSProperties
+  value?: string[]
+  onChange?: (value: string[]) => void
 }
 
-const TagInput: FC<TagInputProps> = ({ value = [], onChange }) => {
+const TagInput: FC<TagInputProps> = ({ value = [], onChange, ...props }) => {
   const [content, setContent] = useState<string>()
   const inputRef = useRef<Input>(null)
 
@@ -50,6 +52,7 @@ const TagInput: FC<TagInputProps> = ({ value = [], onChange }) => {
     <div
       className={classnames(styles.tagInput, 'ant-input')}
       onClick={() => inputRef.current?.focus()}
+      {...props}
     >
       {value.map((item) =>
         item.length > 20 ? (
