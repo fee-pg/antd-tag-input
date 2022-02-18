@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import vitePluginImp from 'vite-plugin-imp'
-import dts from 'vite-dts'
+import dts from 'vite-plugin-dts'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -23,7 +23,9 @@ export default defineConfig({
         }
       ]
     }),
-    dts()
+    dts({
+      insertTypesEntry: true
+    })
   ],
   css: {
     preprocessorOptions: {

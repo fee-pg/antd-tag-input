@@ -1,10 +1,9 @@
 {
   "name": "antd-tag-input",
-  "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
-  "types": "./dist/index.es.d.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.es.js",
@@ -28,10 +27,26 @@
     "less": "^4.1.2",
     "typescript": "^4.5.4",
     "vite": "^2.8.0",
-    "vite-dts": "^1.0.4",
+    "vite-plugin-dts": "^0.9.9",
     "vite-plugin-imp": "^2.1.3"
   },
   "files": [
     "dist"
-  ]
+  ],
+  "description": "```js import TagInput from 'antd-tag-input'; import 'antd-tag-input/dist/style.css'; ```",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fee-pg/antd-tag-input.git"
+  },
+  "keywords": [
+    "antd",
+    "tag",
+    "input"
+  ],
+  "author": "fee-pg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fee-pg/antd-tag-input/issues"
+  },
+  "homepage": "https://github.com/fee-pg/antd-tag-input#readme"
 }
