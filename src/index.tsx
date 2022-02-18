@@ -4,8 +4,8 @@ import { message, Tag, Tooltip, Input } from 'antd'
 import styles from './index.module.less'
 
 type TagInputProps = {
-  value?: string[]
-  onChange?: (value: string[]) => void
+  value: string[]
+  onChange: (value: string[]) => void
 }
 
 const TagInput: FC<TagInputProps> = ({ value = [], onChange }) => {
