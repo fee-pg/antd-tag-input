@@ -23,7 +23,9 @@ export default defineConfig({
         }
       ]
     }),
-    dts()
+    dts({
+      copyDtsFiles: false
+    })
   ],
   css: {
     preprocessorOptions: {
