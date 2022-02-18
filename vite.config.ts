@@ -7,8 +7,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: './src/index.tsx',
-      formats: ['es'],
-      fileName: (format) => `index.${format}.js`
+      name: 'TagInput',
+      fileName: 'index',
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'antd']
