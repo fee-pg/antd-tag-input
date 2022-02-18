@@ -1,9 +1,9 @@
 {
   "name": "antd-tag-input",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/src/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.es.js",

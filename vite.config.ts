@@ -23,9 +23,7 @@ export default defineConfig({
         }
       ]
     }),
-    dts({
-      insertTypesEntry: true
-    })
+    dts()
   ],
   css: {
     preprocessorOptions: {
