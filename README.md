@@ -1,3 +1,6 @@
+![GitHub package.json version](https://img.shields.io/github/package-json/v/fee-pg/antd-tag-input) 
+![npm](https://img.shields.io/npm/dw/antd-tag-input)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/antd-tag-input)
 ## Install
 ```
 npm i antd-tag-input
