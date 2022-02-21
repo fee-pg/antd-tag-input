@@ -6,11 +6,12 @@ import styles from './index.module.less'
 type TagInputProps = {
   className?: string
   style?: React.CSSProperties
+  placeholder?: string
   value?: string[]
   onChange?: (value: string[]) => void
 }
 
-const TagInput: FC<TagInputProps> = ({ value = [], onChange, ...props }) => {
+const TagInput: FC<TagInputProps> = ({ value = [], onChange, placeholder, ...props }) => {
   const [content, setContent] = useState<string>()
   const inputRef = useRef<Input>(null)
 
@@ -68,6 +69,7 @@ const TagInput: FC<TagInputProps> = ({ value = [], onChange, ...props }) => {
       <Input
         ref={inputRef}
         bordered={false}
+        placeholder={placeholder}
         className={styles.input}
         value={content}
         onChange={handleChange}
