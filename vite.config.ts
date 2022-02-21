@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite'
 import vitePluginImp from 'vite-plugin-imp'
 import dts from 'vite-plugin-dts'
@@ -46,5 +47,10 @@ export default defineConfig({
     alias: [
       { find: /^~/, replacement: '' }
     ]
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './test/setup.ts',
   }
 })
