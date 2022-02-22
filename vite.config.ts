@@ -33,7 +33,12 @@ export default defineConfig({
       ]
     }),
     dts({
-      copyDtsFiles: false
+      copyDtsFiles: false,
+      // FYI: https://github.com/qmhc/vite-plugin-dts/issues/54#issuecomment-1010949667
+      beforeWriteFile: (filePath, content) => ({
+        filePath: filePath.replace(/src/, ''),
+        content
+      })
     })
   ],
   css: {
