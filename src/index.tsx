@@ -1,5 +1,4 @@
 import React, { FC, useState, ChangeEvent, useRef } from 'react'
-import classnames from 'classnames'
 import { message, Tag, Tooltip, Input } from 'antd'
 import styles from './index.module.less'
 
@@ -51,7 +50,7 @@ const TagInput: FC<TagInputProps> = ({ value = [], onChange, placeholder, ...pro
 
   return (
     <div
-      className={classnames(styles.tagInput, 'ant-input')}
+      className={`${styles.tagInput} ant-input`}
       onClick={() => inputRef.current?.focus()}
       {...props}
     >
@@ -77,7 +76,7 @@ const TagInput: FC<TagInputProps> = ({ value = [], onChange, placeholder, ...pro
         onKeyPress={handleKeyPress}
         onKeyUp={handleKeyUp}
       />
-      <span className={classnames(styles.clear, 'ant-input-suffix')} onClick={handleClear}>
+      <span className={`${styles.clear} ant-input-suffix`} onClick={handleClear}>
         <span
           role="button"
           aria-label="close-circle"
