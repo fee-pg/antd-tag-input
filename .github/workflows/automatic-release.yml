@@ -1,0 +1,29 @@
+name: Automatic Publish
+on: 
+  push: 
+    branches: 
+      - master
+jobs:
+  Release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: unit test
+        run: |
+          yarn test
+
+      - name: build
+        run: |
+          yarn build
+
+      - name: Automated releases for npm packages
+        uses: mikeal/merge-release@v4.0.7
+
+      - name: Automatic Releases
+        uses: marvinpinto/action-automatic-releases@v1.2.1
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: false
+
+
+
+
