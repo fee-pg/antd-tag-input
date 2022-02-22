@@ -22,8 +22,3 @@ import 'antd-tag-input/dist/style.css';
 | onChange | 输入框内容变化时的回调 | (value: string[]) => void | - |
 | className | 类名 | string | - |
 | style | 内敛样式 | React.CSSProperties => void | - |
-
-## todo
-- [] github 自动化 ci cd 
-- [] eslint 模板, husky
-- [] 接入 changelog 和 自动发布 github release

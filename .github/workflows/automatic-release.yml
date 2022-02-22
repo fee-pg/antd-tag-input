@@ -2,7 +2,7 @@ name: Automatic Publish
 on: 
   push: 
     branches: 
-      - master
+      - main
 jobs:
   Release:
     runs-on: ubuntu-latest
