@@ -69,7 +69,7 @@ const TagInput: FC<TagInputProps> = ({ value = [], onChange, placeholder, ...pro
       <Input
         ref={inputRef}
         bordered={false}
-        placeholder={placeholder}
+        placeholder={!value.length ? placeholder : ''}
         className={styles.input}
         value={content}
         onChange={handleChange}
