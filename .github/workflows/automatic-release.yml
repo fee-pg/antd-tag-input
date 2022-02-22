@@ -7,11 +7,11 @@ jobs:
   Release:
     runs-on: ubuntu-latest
     steps:
-      - name: unit test
+      - name: Unit Test
         run: |
           yarn test
 
-      - name: build
+      - name: Build
         run: |
           yarn build
 
