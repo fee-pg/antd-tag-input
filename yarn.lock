@@ -2530,9 +2530,9 @@ vite-plugin-dts@^0.9.9:
     ts-morph "^13.0.0"
 
 vite-plugin-imp@^2.1.3:
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/vite-plugin-imp/-/vite-plugin-imp-2.1.3.tgz#21bfba27bacf5ea6d081365f152ae06eeb1811fa"
-  integrity sha512-6taY+NXMrOMa6+jDrZXE81xCiJnhrghfbQIBOdNYednjBOma/dDjsKzUg3OzOwETFzZBeNXaDD974dFIa0TCaw==
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/vite-plugin-imp/-/vite-plugin-imp-2.1.7.tgz#b5d2782424456cd00979515005904a75c977b63f"
+  integrity sha512-4VfVcmWPgS/IAoPlDP6YUpC2KYxNQJlxPUOg2m0VYjSHN+PdqvZfxBHrjqti+kUiAVZew+b1/c4ixEK+uyLYbw==
   dependencies:
     "@babel/core" "^7.12.10"
     "@babel/generator" "^7.12.11"
