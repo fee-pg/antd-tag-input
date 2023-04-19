@@ -1,33 +1,62 @@
-import { render } from '@testing-library/react'
+import React from 'react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { fn } from 'vitest'
 import TagInput from '../src/index'
 
-describe('TagInput', async () => {
+describe('TagInput', () => {
   it('should take a snapshot', () => {
-    const { asFragment } = render(<TagInput />)
+    const { asFragment } = render(<TagInput value={[]} onChange={() => {}} />)
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('should render the TagInput', () => {
-    const { getByRole } = render(<TagInput />)
-    expect(getByRole('textbox')).toBeInTheDocument()
+  it('should display tags correctly', () => {
+    const { getByText } = render(<TagInput value={['tag1', 'tag2']} onChange={() => {}} />)
+    expect(getByText('tag1')).toBeInTheDocument()
+    expect(getByText('tag2')).toBeInTheDocument()
   })
 
-  it('should change input value', async () => {
-    const { getByRole } = render(<TagInput />)
-    const input = getByRole('textbox')
+  it('should add tag when enter is pressed', async () => {
+    const onChangeMock = fn()
+    render(<TagInput value={[]} onChange={onChangeMock} />)
+
+    const input = screen.getByRole('textbox')
     expect(input).toBeInTheDocument()
-    userEvent.type(input, 'test')
-    expect(input).toHaveValue('test')
+
+    await userEvent.type(input, 'tag1{enter}')
+    expect(onChangeMock).toHaveBeenCalledWith(['tag1'])
   })
 
-  it('should reset value after clear', async () => {
-    const { getByRole, getByLabelText } = render(<TagInput />)
-    const input = getByRole('textbox')
+  it('should not add duplicate tags', async () => {
+    const onChangeMock = fn()
+    render(<TagInput value={['tag1']} onChange={onChangeMock} />)
+
+    const input = screen.getByRole('textbox')
     expect(input).toBeInTheDocument()
-    userEvent.type(input, 'tag')
-    const clear = getByLabelText('close-circle')
-    userEvent.click(clear)
-    expect(input).toHaveValue('')
+
+    await userEvent.type(input, 'tag1{enter}')
+    expect(onChangeMock).not.toHaveBeenCalled()
+  })
+
+  it('should remove tag when click on close button', async () => {
+    const onChangeMock = fn()
+    render(<TagInput value={['tag1']} onChange={onChangeMock} />)
+
+    const closeBtn = screen.getByLabelText('close')
+    expect(closeBtn).toBeInTheDocument()
+
+    await userEvent.click(closeBtn)
+    expect(onChangeMock).toHaveBeenCalledWith([])
+  })
+
+  it('should clear all tags when click on clear button', async () => {
+    const onChangeMock = fn()
+    render(<TagInput value={['tag1', 'tag2']} onChange={onChangeMock} />)
+
+    const clearBtn = screen.getByLabelText('close-circle')
+    expect(clearBtn).toBeInTheDocument()
+
+    await userEvent.click(clearBtn)
+    expect(onChangeMock).toHaveBeenCalledWith([])
   })
 })
