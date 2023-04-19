@@ -6,13 +6,19 @@ type TagInputProps = {
   className?: string
   style?: React.CSSProperties
   placeholder?: string
-  value?: string[]
-  onChange?: (value: string[]) => void
+  value: string[]
+  onChange: (value: string[]) => void
 }
 
 const TagInput: FC<TagInputProps> = ({ value = [], onChange, placeholder, ...props }) => {
   const [content, setContent] = useState<string>()
   const inputRef = useRef<Input>(null)
+
+  const handleDelete = (tag: string) => {
+    const newArr = value.filter((i) => i !== tag)
+    onChange(newArr)
+    message.destroy()
+  }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setContent(e.target.value)
@@ -24,7 +30,7 @@ const TagInput: FC<TagInputProps> = ({ value = [], onChange, placeholder, ...pro
         message.warn(`[tag: ${content}] already exists`)
         return
       }
-      onChange?.([...value, content])
+      onChange([...value, content])
       setContent('')
     }
   }
@@ -39,13 +45,13 @@ const TagInput: FC<TagInputProps> = ({ value = [], onChange, placeholder, ...pro
         message.warn(`[tag: ${content}] already exists`)
         return
       }
-      onChange?.([...value, content])
+      onChange([...value, content])
       setContent('')
     }
   }
 
   const handleClear = () => {
-    onChange?.([])
+    onChange([])
   }
 
   return (
@@ -57,10 +63,10 @@ const TagInput: FC<TagInputProps> = ({ value = [], onChange, placeholder, ...pro
       {value.map((item) =>
         item.length > 20 ? (
           <Tooltip title={item} key={item}>
-            <Tag closable>{`${item.slice(0, 20)}...`}</Tag>
+            <Tag closable onClose={() => handleDelete(item)}>{`${item.slice(0, 20)}...`}</Tag>
           </Tooltip>
         ) : (
-          <Tag closable key={item}>
+          <Tag closable key={item} onClose={() => handleDelete(item)}>
             {item}
           </Tag>
         )
