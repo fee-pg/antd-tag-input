@@ -1,6 +1,6 @@
 {
   "name": "antd-tag-input",
-  "version": "1.0.12",
+  "version": "1.0.16",
   "scripts": {
     "dev": "vite --open",
     "build": "tsc && vite build",
